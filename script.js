@@ -1,16 +1,7 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const links = document.querySelectorAll("a");
-
-    links.forEach(function (link) {
-        const url = link.getAttribute("href");
-
-        // Check if the link is an external URL (contains 'http')
-        if (url.startsWith("http")) {
-            return; // Skip adding confirmation for external links
-        }
-
-        link.addEventListener("click", function (event) {
-            confirmNavigation(event, url);
-        });
-    });
-});
+function confirmNavigation(event, link) {
+    event.preventDefault();  
+    const userConfirmed = confirm("Are you sure you want to go to this page?");
+    if (userConfirmed) {
+        window.open(link, "_blank");  // Open in a new tab
+    }
+}
