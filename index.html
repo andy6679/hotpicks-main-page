@@ -30,17 +30,15 @@
             font-weight: 700;
         }
 
-        /* Container for grid of apps */
+        /* Flexbox for app links */
         .grid-container {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            width: 80%;
-            justify-content: center;
+            display: flex;
+            justify-content: space-evenly; /* Evenly spaces the links */
+            width: 100%;
+            max-width: 1200px; /* Limits width to 1200px for better control */
             margin-top: 20px;
         }
 
-        /* Style for app links */
         .subdomain-link {
             text-decoration: none;
             font-size: 18px;
@@ -52,6 +50,7 @@
             text-align: center;
             display: block;
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+            width: 18%; /* Ensures that all links fit within the container */
         }
 
         .subdomain-link:hover {
@@ -60,89 +59,70 @@
             transform: scale(1.05);
         }
 
-        /* Free Apps section - no overlay, visible all the time */
-        #freeApps {
-            margin-bottom: 40px;
-        }
-
-        /* Paid Apps section with overlay */
-        #paidApps {
-            position: relative;
-        }
-
-        /* Lock Overlay for Paid Apps */
-        #lockPaidApps {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            display: flex; /* Ensure it's displayed by default */
-            align-items: center;
-            justify-content: center;
+        .donation-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 40px auto 20px;
             text-align: center;
-            z-index: 9999;
-            padding: 20px;
-            box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
         }
 
-        #lockPaidApps input {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
-            text-align: center;
+        .donation-container h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
         }
 
-        #lockPaidApps button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-            background-color: #4CAF50;
-            color: white;
+        .donation-container p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .donate-button {
+            background-color: #ff5a5f;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 18px;
             border: none;
-            border-radius: 5px;
-        }
-
-        #lockPaidApps button:hover {
-            background-color: #45a049;
-        }
-
-        #lockPaidApps a {
-            color: yellow;
+            border-radius: 8px;
+            cursor: pointer;
             text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        /* Instructions at the bottom of the overlay */
-        .overlay-instructions {
-            margin-top: 20px;
-            font-size: 16px;
-            line-height: 1.5;
+        .donate-button:hover {
+            background-color: #e6494d;
+            transform: scale(1.05);
+        }
+
+        #contact-info {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #contact-info h2 {
+            font-size: 24px;
+        }
+
+        #contact-info p {
+            font-size: 18px;
+        }
+
+        #contact-info a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <!-- Welcome Text -->
     <h1>Welcome to Hotpicks</h1>
 
-    <!-- Free Apps - Always Accessible -->
-    <div id="freeApps">
-        <h2>Free Apps (No Subscription Required)</h2>
-        <div class="grid-container">
-            <a href="https://lottery-analysis-free-version.vercel.app/" class="subdomain-link">Free Version: Lottery Analysis</a>
-            <a href="https://thunderball-free-version.vercel.app/" class="subdomain-link">Free Version: Thunderball Analysis</a>
-            <a href="https://euromillions-free-version.vercel.app/" class="subdomain-link">Free Version: Euromillions Analysis</a>
-            <a href="https://set-for-life-free-version.vercel.app/" class="subdomain-link">Free Version: Set for Life Analysis</a>
-            <a href="https://hotpicks-free-version.vercel.app/" class="subdomain-link">Free Version: Hot Picks Analysis</a>
-        </div>
-    </div>
-
-    <!-- Paid Apps - Lock Overlay Only Affects This Section -->
+    <!-- Premium Apps -->
     <div id="paidApps">
-        <h2>Premium Apps (Subscription Required)</h2>
+        <h2>Premium Apps</h2>
         <div class="grid-container">
             <a href="https://lottery-number-analysis.vercel.app" class="subdomain-link">Analysis and Generate Lottery Numbers</a>
             <a href="https://thunderball-number-analysis.vercel.app" class="subdomain-link">Analysis and Generate Thunderball Numbers</a>
@@ -150,52 +130,23 @@
             <a href="https://set-for-life-number-analysis.vercel.app" class="subdomain-link">Analysis and Generate Set for Life Numbers</a>
             <a href="https://hotpicks-number-analysis.vercel.app/" class="subdomain-link">Analysis and Generate Hot Picks Numbers</a>
         </div>
-
-        <!-- Lock Overlay for Paid Apps -->
-        <div id="lockPaidApps">
-            <h2>🔒 Enter Passcode to Unlock Premium Apps</h2>
-            <input type="password" id="overlayPasscode" placeholder="Enter Passcode">
-            <button onclick="unlockPaidApps()">Unlock</button>
-            <p>Not subscribed? <a href="https://buy.stripe.com/8wMdSW4Brat76T65lr">Subscribe here</a></p>
-  
-            <!-- Instructions for users -->
-            <div class="overlay-instructions">
-                <p><strong>Instructions:</strong></p>
-                <p>1. Hit subscribe - This will take you to Stripe.</p>
-                <p>2. Make your payment (£5 per month)</p>
-                <p>3. You will be directed to the code download.</p>
-                <p>4. Enter passcode and click unlock.</p>
-                <p>5. Keep the passcode safe, as you will need to enter it on every visit.</p>
-            </div>
-        </div>
     </div>
 
-    <script>
-        const correctPasscode = "3F8H2K1L9P7Q"; 
+    <!-- Donation Section -->
+    <div class="donation-container">
+        <h2>Support Hotpicks</h2>
+        <p>If you find value in these tools and would like to support us, please consider making a donation.</p>
+        <a class="donate-button" href="https://buy.stripe.com/cN26qu9VL30FfpC29e" target="_blank" rel="noopener noreferrer">
+            Donate Now
+        </a>
+    </div>
 
-        // Unlock function for paid apps
-        function unlockPaidApps() {
-            let enteredPasscode = document.getElementById("overlayPasscode").value;
-
-            if (enteredPasscode === correctPasscode) {
-                document.getElementById("lockPaidApps").style.display = "none"; // Hide lock screen after correct passcode
-            } else {
-                alert("Incorrect passcode! Or subscribe to gain access.");
-            }
-        }
-
-        // Display the overlay every time
-        document.getElementById("lockPaidApps").style.display = "flex"; 
-    </script>
-
-    <!-- Contact Info Section at the Bottom -->
-    <div id="contact-info" style="text-align: center; margin-top: 40px;">
+    <!-- Contact Info -->
+    <div id="contact-info">
         <h2>Contact Us</h2>
         <p>If you have any questions or need further assistance, feel free to reach out to us:</p>
-        <p>Email: <a href="mailto:hotpicksuk.uk@gmail.com" style="color: #fff; text-decoration: none; font-weight: bold;">hotpicksuk.uk@gmail.com</a></p>
+        <p>Email: <a href="mailto:hotpicksuk.uk@gmail.com">hotpicksuk.uk@gmail.com</a></p>
     </div>
 
 </body>
 </html>
-
-
