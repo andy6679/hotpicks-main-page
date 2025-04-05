@@ -1,4 +1,4 @@
- /* Basic reset for margin and padding */
+/* Reset and base styles */
 * {
     margin: 0;
     padding: 0;
@@ -7,99 +7,112 @@
 
 /* Set the font family and background color */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Gradient background */
-    color: #fff; /* Text color for better contrast */
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
     line-height: 1.6;
     padding: 20px;
-    min-height: 100vh; /* Ensure the background covers the entire viewport */
+    min-height: 100vh;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
     flex-direction: column;
-    overflow-x: hidden; /* Prevent horizontal overflow */
+    align-items: center;
 }
 
 /* Style the main header */
 h1 {
     text-align: center;
-    color: #fff; /* White color for the header */
-    margin-bottom: 20px; /* Adjusted space below the header */
-    font-size: 2rem; /* Scaled font size for better responsiveness */
+    margin-bottom: 20px;
+    font-size: 36px;
     font-weight: 700;
 }
 
-/* Style for the unordered list */
-ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* Adds space between each button (list item) */
-    width: 100%;
-    max-width: 600px; /* Prevents list from being too wide */
-    padding: 0;
-    margin: 0;
+/* App grid container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
+    gap: 20px; /* Gap between items */
+    width: 100%; /* Make the grid take up the full width */
+    max-width: 1200px; /* Max width to prevent stretching too wide */
+    margin-top: 20px;
+    padding: 0 20px; /* Add equal padding on left and right */
+    justify-items: center; /* Center the grid items */
 }
 
-/* Style each list item (button) */
-ul li {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Center button within the list item */
-}
-
-/* Style the links (buttons) */
+/* Individual app link style */
 .subdomain-link {
     text-decoration: none;
     font-size: 18px;
-    padding: 15px 30px; /* Adjusted padding for consistency */
-    background-color: #fff; /* White background for the buttons */
-    color: #2575fc; /* Blue text color for contrast */
+    padding: 15px;
+    background-color: #fff;
+    color: #2575fc;
     border-radius: 5px;
     transition: background-color 0.3s, transform 0.3s;
-    width: 100%; /* Buttons will now take the full available width */
-    max-width: 250px; /* Fixed width to make buttons consistent */
     text-align: center;
-    display: inline-block;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+    display: block;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Hover effect for links (buttons) */
+/* Hover effect */
 .subdomain-link:hover {
     background-color: #3498db;
     color: #fff;
     transform: scale(1.05);
 }
 
-/* Make sure the layout is responsive */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.8rem; /* Slightly smaller font size for smaller screens */
-        margin-bottom: 15px;
-    }
-
-    ul {
-        gap: 15px; /* Reduced space between buttons */
-    }
-
-    .subdomain-link {
-        font-size: 16px; /* Adjust font size for smaller screens */
-        padding: 12px 25px; /* Adjust padding */
-    }
+/* Donation Section */
+.donation-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: 40px auto 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.6rem; /* Smaller font size for mobile */
-    }
+.donation-container h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
 
-    ul {
-        gap: 10px; /* Reduced space further for small mobile screens */
-    }
+.donation-container p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
 
-    .subdomain-link {
-        font-size: 14px; /* Further reduced font size for mobile */
-        padding: 10px 20px; /* Further reduced padding */
-    }
+.donate-button {
+    background-color: #ff5a5f;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.donate-button:hover {
+    background-color: #e6494d;
+    transform: scale(1.05);
+}
+
+/* Contact Section */
+#contact-info {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#contact-info h2 {
+    font-size: 24px;
+}
+
+#contact-info p {
+    font-size: 18px;
+}
+
+#contact-info a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
 }
